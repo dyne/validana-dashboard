@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Client} from 'validana-client';
-import {Row, Col, Input, Button, message} from 'antd';
+import {Input, Button, message} from 'antd';
 
 
 class Connect extends Component {
@@ -27,18 +27,15 @@ class Connect extends Component {
     render() {
         return (
             <div>
-                <Row>
-                    <Col span={6}>
-                        <label htmlFor="prefix">the prefix as in VPROC_SIGNPREFIX</label>
-                        <Input name="prefix" defaultValue={this.state.prefix}></Input>
-                        <br/>
-                        <label htmlFor="server">WebSocket server url</label>
-                        <Input name="server" addonBefore="ws://" defaultValue={this.state.server}></Input>
-                        <br/>
-                        <br/>
-                        <Button onClick={this.connect}>Connect</Button>
-                    </Col>
-                </Row>
+                <h2>Connect</h2>
+                <label htmlFor="prefix">the prefix as in VPROC_SIGNPREFIX</label>
+                <Input name="prefix" defaultValue={this.state.prefix}></Input>
+                <br/><br/>
+                <label htmlFor="server">WebSocket server url</label>
+                <Input name="server" addonBefore="ws://" defaultValue={this.state.server}></Input>
+                <br/>
+                <br/>
+                <Button onClick={this.connect}>Connect</Button>
             </div>
         )
     }
