@@ -1,10 +1,11 @@
+import { Col, Layout, Row } from 'antd';
 import React, { Component } from 'react';
+import { Client } from 'validana-client';
 import Connect from './components/Connect';
-import KeyGen from './components/KeyGen';
-import {Layout, Row, Col} from 'antd';
-import Timeline from './components/Timeline';
 import Contracts from './components/Contracts';
-import {Client} from 'validana-client';
+import KeyGen from './components/KeyGen';
+import Timeline from './components/Timeline';
+import Encrypt from './components/Encrypt';
 
 const { Header, Footer, Content } = Layout;
 
@@ -14,16 +15,16 @@ class App extends Component {
 
     this.state = {
       client: Client.get(),
+      privateKey: null,
       timeline: []
     }
 
-    this.privateKey = ''
     this.onKeyGenerate = this.onKeyGenerate.bind(this)
     this.onConnect = this.onConnect.bind(this)
   }
 
   onKeyGenerate(privateKey) {
-    this.privateKey = privateKey
+    this.setState({privateKey: privateKey})
   }
 
   onConnect() {
@@ -57,7 +58,9 @@ class App extends Component {
               <Col span={12}>
                 <Contracts client={this.state.client} />
               </Col>
-              <Col span={12}></Col>
+              <Col span={12}>
+                <Encrypt client={this.state.client} privateKey={this.state.privateKey} />
+              </Col>
             </Row>
           </Content>
         </Layout>

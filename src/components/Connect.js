@@ -8,7 +8,8 @@ class Connect extends Component {
         
         this.state = {
             prefix: 'test',
-            server: 'localhost:8080/v1'
+            server: 'localhost:8080/v1',
+            canReconnect: true
         }
         this.connect = this.connect.bind(this)
         this.handlePrefixChange = this.handlePrefixChange.bind(this)
@@ -32,14 +33,23 @@ class Connect extends Component {
                     setTimeout(this.props.onFail, 1000)
                     message.error(e.message);
                 });
+        this.setState({
+            canReconnect: false
+        })
     }
 
     handleServerChange(e) {
-        this.setState({server: e.target.value})
+        this.setState({
+            server: e.target.value,
+            canReconnect: true
+        })
     }
 
     handlePrefixChange(e) {
-        this.setState({prefix: e.target.value})
+        this.setState({
+            prefix: e.target.value,
+            canReconnect: true
+        })
     }
 
     render() {
@@ -47,12 +57,13 @@ class Connect extends Component {
             <Card title="Connect">
                 <label htmlFor="prefix">the prefix as in VPROC_SIGNPREFIX</label>
                 <Input name="prefix" defaultValue={this.state.prefix} onChange={this.handlePrefixChange}/>
-                <br/><br/>
+                <br/>
+                <br/>
                 <label htmlFor="server">WebSocket server url</label>
                 <Input name="server" addonBefore="ws://" defaultValue={this.state.server} onChange={this.handleServerChange}/>
                 <br/>
                 <br/>
-                <Button onClick={this.connect} type="primary">Connect</Button>
+                <Button disabled={!this.state.canReconnect} onClick={this.connect} type="primary">Connect</Button>
             </Card>
         )
     }
