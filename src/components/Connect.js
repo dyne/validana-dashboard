@@ -27,8 +27,10 @@ class Connect extends Component {
                 .then(() => {
                     this.props.client.init(this.state.prefix, address, address)
                     message.success('Connection successful', 2.5)
+                    setTimeout(this.props.onConnect, 1000)
                 }).catch(e => {
-                    console.error(e);
+                    setTimeout(this.props.onFail, 1000)
+                    message.error(e.message);
                 });
     }
 
