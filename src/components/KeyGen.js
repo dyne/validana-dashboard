@@ -20,7 +20,7 @@ class KeyGen extends Component {
                 address: this.state.keypair.getAddress(),
                 privateKey: this.state.keypair.toWIF()
             })
-            this.props.privateKey = this.state.keypair
+            this.props.onKeyGenerate(this.state.keypair)
         })
 
         return
@@ -29,7 +29,7 @@ class KeyGen extends Component {
     render() {
         return (
             <Card title="Key Pairs">
-                <Button type="primary" onClick={this.generateKeyPair}>Generate keypairs (private/public) and a address</Button> 
+                <Button type="primary" onClick={this.generateKeyPair}>Generate</Button> 
                 <br/><br/>
                 Private Key: {this.state.privateKey}
                 <br/><br/>

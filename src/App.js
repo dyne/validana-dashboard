@@ -13,6 +13,12 @@ class App extends Component {
 
     this.client = Client.get()
     this.privateKey = ''
+
+    this.onKeyGenerate = this.onKeyGenerate.bind(this)
+  }
+
+  onKeyGenerate(privateKey) {
+    this.privateKey = privateKey
   }
 
   render() {
@@ -27,7 +33,7 @@ class App extends Component {
                 <Connect client={this.client} />
               </Col>
               <Col span={8} offset={8}>
-                <KeyGen privateKey={this.privateKey} />
+                <KeyGen onKeyGenerate={this.onKeyGenerate} />
               </Col>
             </Row>
             <br/>
