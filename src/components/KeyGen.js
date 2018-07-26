@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button} from 'antd';
+import {Button, Card} from 'antd';
 import {PrivateKey} from 'validana-client'
 
 class KeyGen extends Component {
@@ -20,6 +20,7 @@ class KeyGen extends Component {
                 address: this.state.keypair.getAddress(),
                 privateKey: this.state.keypair.toWIF()
             })
+            this.props.privateKey = this.state.keypair
         })
 
         return
@@ -27,15 +28,13 @@ class KeyGen extends Component {
 
     render() {
         return (
-            <div>
-                <h2>KeyPairs</h2>
-
-                <Button onClick={this.generateKeyPair}>Generate keypairs (private/public) and a address</Button> 
+            <Card title="Key Pairs">
+                <Button type="primary" onClick={this.generateKeyPair}>Generate keypairs (private/public) and a address</Button> 
                 <br/><br/>
                 Private Key: {this.state.privateKey}
                 <br/><br/>
                 Address: {this.state.address}
-            </div>
+            </Card>
         )
     }
 }
