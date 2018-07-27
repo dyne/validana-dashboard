@@ -1,7 +1,5 @@
 <p align="center">
-	<a href="https://zenroom.dyne.org">
-		<img src="https://zenroom.dyne.org/img/software_by_dyne.png" width="300" alt="zenroom studio">
-	</a>
+  <img src="https://zenroom.dyne.org/img/software_by_dyne.png" width="300" alt="zenroom studio">
 </p>
 <p align="center">
   <a href="https://dyne.org">
