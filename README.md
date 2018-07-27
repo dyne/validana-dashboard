@@ -104,6 +104,7 @@ As for now the software has no configuration.
 ## :heart_eyes: Acknowledgements
 
 Copyright (C) 2018 by [Dyne.org](https://www.dyne.org) foundation, Amsterdam
+
 Designed, written and maintained by Puria Nafisi Azizi.
 
 ***
